@@ -1,0 +1,44 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+	<head th:include="fragments/fragment :: head"></head>
+	<body>
+		<nav class="navbar navbar-inverse">
+			<div class="container-fluid">
+				<div class="navbar-header">
+					<a class="navbar-brand" href="/">SI KEPENDUDUKAN</a>
+				</div>
+				<ul class="nav navbar-nav">
+					<li class="active"><a href="/">Home</a></li>
+					<li><a href="#">Cari Data</a></li>
+				</ul>
+			</div>
+		</nav>
+		<div class="container">
+			<div class="header">
+				<h2>Sistem Informasi Kependudukan Online Provinsi DKI Jakarta</h2>
+				<p>Selamat datang di Sistem Informasi Online Provinsi DKI Jakarta</p>
+			</div>
+			<hr />
+			<div class="searcher-form">
+				<h3>Lihat Data Penduduk Berdasarkan NIK</h3>
+				<form action="/penduduk" method="get">
+					<div class="form-group">
+						<label for="nik">Masukkan Nomor Induk Kependudukan</label>
+						<input class="form-control" type="text" name="nik" />
+					</div>
+					<button type="submit" class="btn btn-info">Lihat</button>
+				</form>
+			</div>
+			<hr />
+			<div class="searcher-form">
+				<h3>Lihat Data Keluarga Berdasarkan NKK</h3>
+				<form action="/keluarga" method="get">
+					<div class="form-group">
+						<label for="nkk">Masukkan Nomor Kartu Keluarga</label>
+						<input class="form-control" type="text" name="nkk" />
+					</div>
+					<button type="submit" class="btn btn-info">Lihat</button>
+				</form>
+			</div>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,71 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+	<head th:include="fragments/fragment :: head"></head>
+	<body>
+		<div th:include="fragments/fragment :: navbar"></div>
+		<div class="container">
+			<h3>Ubah Penduduk</h3>
+			<form th:action="@{/penduduk/ubah/{path}(path=${pendudukNik})}" method="post">
+				<input type="hidden" name="id" th:value="${penduduk.id}" />
+				<div class="form-group">
+					<label for="nama">Nama</label>
+					<input class="form-control" type="text" th:value="${penduduk.nama}" name="nama" />
+				</div>
+				<div class="form-group">
+					<label for="tempatLahir">Tempat Lahir</label>
+					<input class="form-control" type="text" readonly="true" th:value="${penduduk.tempatLahir}" name="tempatLahir" />
+				</div>
+				<div class="form-group">
+					<label for="tanggalLahir">Tanggal Lahir</label>
+					<input class="form-control" type="text" name="tanggalLahir" readonly="true" th:value="${penduduk.tanggalLahir}" placeholder="yyyy-mm-dd" />
+				</div>
+				<div class="form-group">
+					<label for="jenisKelamin">Jenis Kelamin</label>
+					<select class="form-control" name="jenisKelamin">
+						<option th:selected="${penduduk.jenisKelamin} == 0 ? true : false" value="0">Laki-laki</option>
+						<option th:selected="${penduduk.jenisKelamin} == 1 ? true : false" value="1">Perempuan</option>
+					</select>
+				</div>
+				<div class="form-group">
+					<label for="golonganDarah">Golongan Darah</label>
+					<select class="form-control" name="golonganDarah">
+						<option th:selected="${penduduk.golonganDarah} == 'A' ? true : false" value="A">A</option>
+						<option th:selected="${penduduk.golonganDarah} == 'B' ? true : false" value="B">B</option>
+						<option th:selected="${penduduk.golonganDarah} == 'AB' ? true : false" value="AB">AB</option>
+						<option th:selected="${penduduk.golonganDarah} == 'O' ? true : false" value="O">O</option>
+					</select>
+				</div>
+				<div class="form-group">
+					<label for="agama">Agama</label>
+					<input class="form-control" type="text" name="agama" th:value="${penduduk.agama}" />
+				</div>
+				<div class="form-group">
+					<label for="statusPerkawinan">Status Perkawinan</label>
+					<select class="form-control" name="statusPerkawinan">
+						<option th:selected="${penduduk.statusPerkawinan} == 'Kawin' ? true : false" value="Kawin">Kawin</option>
+						<option th:selected="${penduduk.statusPerkawinan} == 'Belum Kawin' ? true : false" value="Belum Kawin">Belum Kawin</option>
+					</select>
+				</div>
+				<div class="form-group">
+					<label for="pekerjaan">Pekerjaan</label>
+					<input class="form-control" type="text" name="pekerjaan" th:value="${penduduk.pekerjaan}" />
+				</div>
+				<div class="form-group">
+					<label for="isWni">Kewarganegaraan</label>
+					<select class="form-control" name="isWni">
+						<option th:selected="${penduduk.isWni} == 1 ? true : false" value="1">WNI</option>
+						<option th:selected="${penduduk.isWni} == 0 ? true : false" value="0">WNA</option>
+					</select>
+				</div>
+				<div class="form-group">
+					<label for="keluarga">ID Keluarga</label>
+					<input class="form-control" type="text" name="keluarga" th:value="${penduduk.keluarga.id}" />
+				</div>
+				<div class="form-group">
+					<label for="statusKeluarga">Status Dalam Keluarga</label>
+					<input class="form-control" type="text" name="statusKeluarga" th:value="${penduduk.statusKeluarga}" />
+				</div>
+				<button class="btn btn-info" type="submit">Simpan</button>
+			</form>
+		</div>
+	</body>
+</html>

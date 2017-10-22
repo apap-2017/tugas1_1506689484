@@ -1,0 +1,33 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+	<head th:include="fragments/fragment :: head"></head>
+	<body>
+		<div th:include="fragments/fragment :: navbar"></div>
+		<div class="container">
+			<h3>Lihat Penduduk Berdasarkan Kota, Kecamatan dan Kelurahan</h3>
+			<form action="/penduduk/cari" method="get">
+				<input type="hidden" name="kt" th:value="${kota.id}" />
+				<input type="hidden" name="kc" th:value="${kecamatan.id}" />
+				<div class="form-group">
+					<label for="kota">Kota</label>
+					<select class="form-control" name="ktd" disabled="disabled">
+						<option th:text="${kota.namaKota}"></option>
+					</select>
+				</div>
+				<div class="form-group">
+					<label for="kecamatan">Kecamatan</label>
+					<select class="form-control" name="kcd" disabled="disabled">
+						<option th:text="${kecamatan.namaKecamatan}"></option>
+					</select>
+				</div>
+				<div class="form-group">
+					<label for="kelurahan">Kelurahan</label>
+					<select class="form-control" name="kl" required="required">
+						<option value="">Pilih kelurahan...</option>
+						<option th:each="kelurahan : ${listKelurahan}" th:value="${kelurahan.id}" th:text="${kelurahan.namaKelurahan}"></option>
+					</select>
+				</div>
+				<button type="submit" class="btn btn-info">Lihat</button>
+			</form>
+		</div>
+	</body>
+</html>

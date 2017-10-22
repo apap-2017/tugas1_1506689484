@@ -1,0 +1,19 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+	<head th:include="fragments/fragment :: head"></head>
+	<body>
+		<div th:include="fragments/fragment :: navbar"></div>
+		<div class="container">
+			<h3>Lihat Penduduk Berdasarkan Kota, Kecamatan dan Kelurahan</h3>
+			<form action="/penduduk/cari" method="get">
+				<div class="form-group">
+					<label for="kota">Pilih Kota</label>
+					<select class="form-control" name="kt" required="required">
+						<option value="">Pilih kota...</option>
+						<option th:each="kota : ${listKota}" th:value="${kota.id}" th:text="${kota.namaKota}"></option>
+					</select>
+				</div>
+				<button type="submit" class="btn btn-info">Lihat</button>
+			</form>
+		</div>
+	</body>
+</html>

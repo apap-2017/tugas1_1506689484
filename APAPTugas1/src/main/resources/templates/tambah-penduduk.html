@@ -1,0 +1,77 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+	<head th:include="fragments/fragment :: head"></head>
+	<body>
+		<div th:include="fragments/fragment :: navbar"></div>
+		<div class="container">
+			<h3>Tambah Penduduk</h3>
+			<form action="/penduduk/tambah" method="post">
+				<div class="form-group">
+					<label for="nama">Nama</label>
+					<input class="form-control" type="text" name="nama" />
+				</div>
+				<div class="form-group">
+					<label for="tempatLahir">Tempat Lahir</label>
+					<input class="form-control" type="text" name="tempatLahir" />
+				</div>
+				<div class="form-group">
+					<label for="tanggalLahir">Tanggal Lahir</label>
+					<input class="form-control" type="text" name="tanggalLahir" placeholder="yyyy-mm-dd" />
+				</div>
+				<div class="form-group">
+					<label for="jenisKelamin">Jenis Kelamin</label>
+					<select class="form-control" name="jenisKelamin">
+						<option value="0">Laki-laki</option>
+						<option value="1">Perempuan</option>
+					</select>
+				</div>
+				<div class="form-group">
+					<label for="golonganDarah">Golongan Darah</label>
+					<select class="form-control" name="golonganDarah">
+						<option value="A">A</option>
+						<option value="B">B</option>
+						<option value="AB">AB</option>
+						<option value="O">O</option>
+					</select>
+				</div>
+				<div class="form-group">
+					<label for="agama">Agama</label>
+					<input class="form-control" type="text" name="agama" />
+				</div>
+				<div class="form-group">
+					<label for="statusPerkawinan">Status Perkawinan</label>
+					<select class="form-control" name="statusPerkawinan">
+						<option value="Kawin">Kawin</option>
+						<option value="Belum Kawin">Belum Kawin</option>
+					</select>
+				</div>
+				<div class="form-group">
+					<label for="pekerjaan">Pekerjaan</label>
+					<input class="form-control" type="text" name="pekerjaan" />
+				</div>
+				<div class="form-group">
+					<label for="isWni">Kewarganegaraan</label>
+					<select class="form-control" name="isWni">
+						<option value="1">WNI</option>
+						<option value="0">WNA</option>
+					</select>
+				</div>
+				<div class="form-group">
+					<label for="isWafat">Status Kematian</label>
+					<select class="form-control" name="isWafat">
+						<option value="0">Hidup</option>
+						<option value="1">Mati</option>
+					</select>
+				</div>
+				<div class="form-group">
+					<label for="keluarga">ID Keluarga</label>
+					<input class="form-control" type="text" name="keluarga" />
+				</div>
+				<div class="form-group">
+					<label for="statusKeluarga">Status Dalam Keluarga</label>
+					<input class="form-control" type="text" name="statusKeluarga" />
+				</div>
+				<button class="btn btn-info" type="submit">Simpan</button>
+			</form>
+		</div>
+	</body>
+</html>

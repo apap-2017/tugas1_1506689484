@@ -1,0 +1,31 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+	<head th:include="fragments/fragment :: head"></head>
+	<body>
+		<div th:include="fragments/fragment :: navbar"></div>
+		<div class="container">
+			<h3>Ubah Keluarga</h3>
+			<form th:action="@{/keluarga/ubah/{path}(path=${keluargaNKK})}" method="post">
+				<input type="hidden" name="id" th:value="${keluarga.id}" />
+				<div class="form-group">
+					<label for="alamat">Alamat</label>
+					<input class="form-control" th:value="${keluarga.alamat}" type="text" name="alamat" />
+				</div>
+				<div class="form-group">
+					<label for="alamat">RT</label>
+					<input class="form-control" th:value="${keluarga.rt}" type="text" name="rt" />
+				</div>
+				<div class="form-group">
+					<label for="alamat">RW</label>
+					<input class="form-control" th:value="${keluarga.rw}" type="text" name="rw" />
+				</div>
+				<div class="form-group">
+					<label for="alamat">Kelurahan, Kecamatan, dan Kota</label>
+					<select class="form-control" name="kelurahan">
+						<option th:each="kelurahan: ${listKelurahan}" th:selected="${kelurahan.id} == ${keluarga.kelurahan.id} ? true : false" th:value="${kelurahan.id}" th:text="${kelurahan.namaKelurahan} + ', ' + ${kelurahan.kecamatan.namaKecamatan} + ', ' + ${kelurahan.kecamatan.kota.namaKota}">Kelurahan</option>
+					</select>
+				</div>
+				<button type="submit" class="btn btn-info">Simpan</button>
+			</form>
+		</div>
+	</body>
+</html>

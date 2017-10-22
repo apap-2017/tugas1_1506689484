@@ -1,0 +1,84 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+	<head th:include="fragments/fragment :: head"></head>
+	<body>
+		<div th:include="fragments/fragment :: navbar"></div>
+		<div class="container">
+			<h3>Data Penduduk</h3>
+			<table class="table table-striped">
+				<tr>
+					<th>Kota</th>
+					<td th:text="${kota.namaKota}">Kota</td>
+				</tr>
+				<tr>
+					<th>Kecamatan</th>
+					<td th:text="${kecamatan.namaKecamatan}">Kecamatan</td>
+				</tr>
+				<tr>
+					<th>Kelurahan</th>
+					<td th:text="${kelurahan.namaKelurahan}">Kecamatan</td>
+				</tr>
+			</table>
+			<div class="row">
+				<div class="col-sm-6">
+					<h4>Penduduk dengan Usia Termuda</h4>
+					<table class="table table-striped">
+						<tr>
+							<th>NIK</th>
+							<td th:text="${youngest.nik}"></td>
+						</tr>
+						<tr>
+							<th>Nama</th>
+							<td th:text="${youngest.nama}"></td>
+						</tr>
+						<tr>
+							<th>Tanggal Lahir</th>
+							<td th:text="${youngest.tanggalLahir}"></td>
+						</tr>
+					</table>
+				</div>
+				<div class="col-sm-6">
+					<h4>Penduduk dengan Usia Tertua</h4>
+					<table class="table table-striped">
+						<tr>
+							<th>NIK</th>
+							<td th:text="${oldest.nik}"></td>
+						</tr>
+						<tr>
+							<th>Nama</th>
+							<td th:text="${oldest.nama}"></td>
+						</tr>
+						<tr>
+							<th>Tanggal Lahir</th>
+							<td th:text="${oldest.tanggalLahir}"></td>
+						</tr>
+					</table>
+				</div>
+			</div>
+			<hr />
+			<table id="table" class="table table-striped display">
+				<thead>
+					<tr>
+						<th>No.</th>
+						<th>NIK</th>
+						<th>Nama</th>
+						<th>Jenis Kelamin</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="penduduk, iterationStatus : ${listPenduduk}">
+						<td th:text="${iterationStatus.count}"></td>
+						<td th:text="${penduduk.nik}"></td>
+						<td th:text="${penduduk.nama}"></td>
+						<td th:text="${penduduk.jenisKelamin} == 1 ? 'Perempuan' : 'Laki-Laki'"></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</body>
+	<script src="/data-tables/datatables.min.js"></script>
+	<script>
+		$(document).ready(function() {
+			$("#table").DataTable();
+		})
+	</script>
+</html>

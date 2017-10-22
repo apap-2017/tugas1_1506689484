@@ -1,0 +1,73 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+	<head th:include="fragments/fragment :: head"></head>
+	<body>
+		<div th:include="fragments/fragment :: navbar"></div>
+		<div class="container">
+			<div class="header">
+				<h3 th:text="'Lihat Data Keluarga - ' + ${keluarga.noKK}">Nomor KK</h3>
+				<table class="table table-striped">
+					<tr>
+						<th>NKK</th>
+						<td><p th:text="${keluarga.noKK}"></p></td>
+					</tr>
+					<tr>
+						<th>Alamat</th>
+						<td><p th:text="${keluarga.alamat}"></p></td>
+					</tr>
+					<tr>
+						<th>RT/RW</th>
+						<td><p th:text="${keluarga.rt} + '/' + ${keluarga.rw}"></p></td>
+					</tr>
+					<tr>
+						<th>Kelurahan/Desa</th>
+						<td><p th:text="${keluarga.kelurahan.namaKelurahan}"></p></td>
+					</tr>
+					<tr>
+						<th>Kecamatan</th>
+						<td><p th:text="${keluarga.kelurahan.kecamatan.namaKecamatan}"></p></td>
+					</tr>
+					<tr>
+						<th>Kota</th>
+						<td><p th:text="${keluarga.kelurahan.kecamatan.kota.namaKota}"></p></td>
+					</tr>
+				</table>
+			</div>
+			<hr />
+			<div class="content">
+				<h3>Anggota Keluarga</h3>
+				<table class="table table-striped">
+					<thead>
+						<tr>
+							<th>No</th>
+							<th>Nama Lengkap</th>
+							<th>NIK</th>
+							<th>Jenis Kelamin</th>
+							<th>Tempat Lahir</th>
+							<th>Tanggal Lahir</th>
+							<th>Agama</th>
+							<th>Pekerjaan</th>
+							<th>Status Perkawinan</th>
+							<th>Status Dalam Keluarga</th>
+							<th>Kewarganegaraan</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="member, iterationStatus: ${keluarga.anggota}">
+							<td th:text="${iterationStatus.count}">1</td>
+							<td th:text="${member.nama}">Nama</td>
+							<td th:text="${member.nik}">NIK</td>
+							<td th:text="${member.jenisKelamin} == 0 ? 'Pria' : 'Wanita'">1</td>
+							<td th:text="${member.tempatLahir}">Tempat</td>
+							<td th:text="${member.tanggalLahir}">1</td>
+							<td th:text="${member.agama}">1</td>
+							<td th:text="${member.pekerjaan}">1</td>
+							<td th:text="${member.statusPerkawinan}">1</td>
+							<td th:text="${member.statusKeluarga}">1</td>
+							<td th:text="${member.isWni} == 1 ? 'WNI' : 'WNA'">1</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</body>
+</html>

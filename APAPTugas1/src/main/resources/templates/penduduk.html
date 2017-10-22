@@ -1,0 +1,75 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+	<head th:include="fragments/fragment :: head"></head>
+	<body>
+		<div th:include="fragments/fragment :: navbar"></div>
+		<div class="container">
+			<div class="alert alert-danger" th:if="${suksesMati} == true">
+				<h3>Penduduk Berhasil Dinonaktifkan</h3>
+				<p th:text="'Penduduk dengan NIK ' + ${penduduk.nik} + ' berhasil dinonaktifkan'"></p>
+			</div>
+			<h3 th:text="'Lihat Data Penduduk - ' + ${penduduk.nik}" >Head</h3><br />
+			<table class="table table-striped">
+				<tr>
+					<td><strong>NIK</strong></td>
+					<td><p th:text="${penduduk.nik}">NIK</p></td>
+				</tr>
+				<tr>
+					<td><strong>Nama</strong></td>
+					<td><p th:text="${penduduk.nama}">Nama</p></td>
+				</tr>
+				<tr>
+					<td><strong>Tempat/Tanggal Lahir</strong></td>
+					<td><p th:text="${penduduk.tempatLahir} + ', ' + ${penduduk.tanggalLahir}">Tempat Tanggal Lahir</p></td>
+				</tr>
+				<tr>
+					<td><strong>Alamat</strong></td>
+					<td><p th:text="${penduduk.keluarga.alamat}">Alamat</p></td>
+				</tr>
+				<tr>
+					<td><strong>RT/RW</strong></td>
+					<td><p th:text="${penduduk.keluarga.rt} + '/' + ${penduduk.keluarga.rw}">RT/RW</p></td>
+				</tr>
+				<tr>
+					<td><strong>Kelurahan/Desa</strong></td>
+					<td><p th:text="${penduduk.keluarga.kelurahan.namaKelurahan}">Kelurahan</p></td>
+				</tr>
+				<tr>
+					<td><strong>Kecamatan</strong></td>
+					<td><p th:text="${penduduk.keluarga.kelurahan.kecamatan.namaKecamatan}">Kecamatan</p></td>
+				</tr>
+				<tr>
+					<td><strong>Kota</strong></td>
+					<td><p th:text="${penduduk.keluarga.kelurahan.kecamatan.kota.namaKota}">Kota</p></td>
+				</tr>
+				<tr>
+					<td><strong>Golongan Darah</strong></td>
+					<td><p th:text="${penduduk.golonganDarah}">Goldar</p></td>
+				</tr>
+				<tr>
+					<td><strong>Agama</strong></td>
+					<td><p th:text="${penduduk.agama}">Agama</p></td>
+				</tr>
+				<tr>
+					<td><strong>Status Perkawinan</strong></td>
+					<td><p th:text="${penduduk.statusPerkawinan}">Status</p></td>
+				</tr>
+				<tr>
+					<td><strong>Pekerjaan</strong></td>
+					<td><p th:text="${penduduk.pekerjaan}">Pekerjaan</p></td>
+				</tr>
+				<tr>
+					<td><strong>Kewarganegaraan</strong></td>
+					<td><p th:text="${penduduk.isWni} == 1 ? 'WNI' : 'WNA'">Warganegara</p></td>
+				</tr>
+				<tr>
+					<td><strong>Status Kematian</strong></td>
+					<td><p th:text="${penduduk.isWafat} == 1 ? 'Wafat' : 'Hidup'">Status Hidup</p></td>
+				</tr>
+			</table>
+			<form action="penduduk/mati" method="post" th:if="${penduduk.isWafat == 0}">
+				<input type="hidden" name="nik" th:value="${penduduk.nik}" />
+				<button type="submit" class="btn btn-danger">Nonaktifkan</button>
+			</form>
+		</div>
+	</body>
+</html>
